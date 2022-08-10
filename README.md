@@ -17,8 +17,8 @@ Here is a small break down of how to run commands in this application. There are
 
 ### Features
 
- [x] - Command interpreter (main program).
- [x] - Plugin manager with two types of plugins (command extensions and modules).
+ - [x] - Command interpreter (main program).
+ - [x] - Plugin manager with two types of plugins (command extensions and modules).
 
 ### Known Bugs
 
