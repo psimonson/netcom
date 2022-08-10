@@ -8,5 +8,5 @@ This is a SDK for my example program, "Network Commander". There are a couple of
 
 ### License
 
- - None (will add later)
+ - CC0-1.0
 

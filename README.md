@@ -26,7 +26,7 @@ Here is a small break down of how to run commands in this application. There are
 
 ### License
 
- - None (will add later).
+ - CC0-1.0
 
 ### Developer
 
