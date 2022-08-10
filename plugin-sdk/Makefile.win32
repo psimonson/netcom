@@ -1,0 +1,48 @@
+CC=i686-w64-mingw32-gcc
+CFLAGS=-std=c11 -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
+CFLAGS+=-I. -I../libprs
+LDFLAGS=-L../libprs -lmingw32 -lprs -lws2_32
+
+SRCDIR=$(shell basename $(shell pwd))
+VERSION=1.0
+TARNAME=$(SRCDIR)-$(VERSION)
+
+SOURCE1=plugin.c parse.c plugin1/cmd.c plugin1/main.c
+OBJECT1=$(SOURCE1:%.c=%.c.o)
+TARGET1=plugin1.dll
+
+SOURCE2=plugin.c parse.c plugin2/main.c
+OBJECT2=$(SOURCE2:%.c=%.c.o)
+TARGET2=plugin2.dll
+
+OBJECTS=$(OBJECT1) $(OBJECT2)
+TARGETS=$(TARGET1) $(TARGET2)
+
+.PHONY: all clean distclean dist
+all: $(TARGETS)
+
+clean:
+	@echo -n "Cleaning project... "
+	@rm -f $(OBJECTS) $(TARGETS) && echo "done!" || echo "failed!"
+
+dist: distclean
+	@echo "Building distribution: $(TARNAME)..."
+	@(cd .. && tar cv --exclude=.git ./$(SRCDIR) | xz -9 > $(TARNAME).tar.xz) && echo "Finished building distribution." || echo "Failed to build distribution."
+
+distclean:
+	@echo "Cleaning distribution... "
+	@$(MAKE) -f Makefile.win32 clean
+	@rm -f *.bak && echo "done!" || echo "failed!"
+
+$(TARGET1): $(OBJECT1)
+	@echo -n "Building project: $(TARGET1) "
+	@$(CC) $(CFLAGS) -shared $^ -o $@ $(LDFLAGS) && echo "- [DONE]" || echo "- [FAIL]"
+
+$(TARGET2): $(OBJECT2)
+	@echo -n "Building project: $(TARGET2) "
+	@$(CC) $(CFLAGS) -shared $^ -o $@ $(LDFLAGS) && echo "- [DONE]" || echo "- [FAIL]"
+
+%.c.o: %.c
+	@echo "Compiling source file: $< => $@"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
