@@ -10,7 +10,7 @@
 #ifndef _CMD_H_
 #define _CMD_H_
 
-#include "network.h"
+#include "prs/network.h"
 
 #define CMD_DEF(X) static int cmd_ ##X (const SOCKET fd, const Argument *args)
 #define CMD_ADD1(X,A,M) { #X, A, M, cmd_ ##X }

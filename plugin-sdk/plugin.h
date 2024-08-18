@@ -10,9 +10,9 @@
 #ifndef _PLUGIN_H_
 #define _PLUGIN_H_
 
-#include "network.h"
-#include "abuffer.h"
-#include "clist.h"
+#include "prs/network.h"
+#include "prs/abuffer.h"
+#include "prs/clist.h"
 #include "cmd.h"
 
 #define PLUGIN_INIT(A, B, C) void plugin_init(Plugin *pm) { \

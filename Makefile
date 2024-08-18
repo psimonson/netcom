@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-std=c11 -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
-CFLAGS+=-I./plugin-sdk -I./libprs
-LDFLAGS=-L./libprs -lprs
+CFLAGS+=-I./plugin-sdk
+LDFLAGS=-lprs
 
 SRCDIR=$(shell basename $(shell pwd))
 VERSION=1.0

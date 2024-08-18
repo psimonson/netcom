@@ -158,7 +158,6 @@ static int pm_load(const char *dirname)
  */
 int pm_init(const char *dirname)
 {
-	pm_list = clist_init();
 	if(pm_load(dirname) < 0) {
 		printf("Cannot initialize plugins.\n");
 		return -1;

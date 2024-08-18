@@ -17,7 +17,7 @@
 #include <unistd.h>
 #endif
 
-#include "abuffer.h"
+#include "prs/abuffer.h"
 #include "plugin.h"
 #include "parse.h"
 

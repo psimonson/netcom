@@ -8,7 +8,7 @@
  */
 
 #include <stdio.h>
-#include "network.h"
+#include "prs/network.h"
 #include "plugin.h"
 
 void init(Plugin *pm, const SOCKET fd)
